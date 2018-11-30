@@ -1,0 +1,58 @@
+{
+  "name": "@kaluza/react-datepicker",
+  "version": "1.0.0",
+  "description": "React Datepicker loosely based around Material UI design.",
+  "main": "calendar.js",
+  "scripts": {
+    "build": "npm run compile-js && npm run compile-less && npm run replace-less-css && npm run cp-misc",
+    "compile-js": "babel -d dist/ calendar.js",
+    "compile-less": "lessc calendar.less dist/calendar.css",
+    "cp-misc": "copy 'package.json' 'dist' && copy 'LICENSE.txt' 'dist' && copy 'README.md' 'dist'",
+    "replace-less-css": "replace 'calendar.less' 'calendar.css' dist/calendar.js",
+    "test": "babel-node spec/run.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ovotech/react-datepicker.git"
+  },
+  "keywords": [
+    "react",
+    "datepicker",
+    "calendar"
+  ],
+  "author": "Dave Salomon <dave.salomon@ovoenergy.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ovotech/react-datepicker/issues"
+  },
+  "homepage": "https://github.com/ovotech/react-datepicker#readme",
+  "peerDependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "moment": "^2.22.2",
+    "prop-types": "^15.6.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "babel-plugin-inline-import-data-uri": "^1.0.1",
+    "copy": "^0.3.2",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "ignore-styles": "^5.0.1",
+    "jasmine": "^3.3.0",
+    "jasmine-spec-reporter": "^4.2.1",
+    "jsdom": "^13.0.0",
+    "less": "^3.9.0",
+    "mock-browser": "^0.92.14",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "replace": "^1.0.0"
+  }
+}

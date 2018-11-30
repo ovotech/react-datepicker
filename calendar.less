@@ -1,0 +1,282 @@
+.calendar {
+  background: #fff;
+  height: 510px;
+  line-height: 24px;
+  position: relative;
+  width: 100%;
+
+  .chevron-left, .chevron-right {
+    display: inline-block;
+    position: relative;
+    top: 10px;
+    width: 32px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .chevron-left {
+    margin-right: 10px;
+  }
+
+  .chevron-right {
+    margin-left: 10px;
+  }
+
+  .calendar-month-area, .calendar-year-area {
+    height: 350px;
+    left: 0;
+    opacity: 1;
+    overflow-y: auto;
+    position: absolute;
+    transition: 1s;
+    top: 90px;
+    width: 100%;
+
+    &.is-faded {
+      opacity: 0;
+      z-index: -100;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    li {
+      cursor: pointer;
+      padding: 11px 0;
+      text-align: center;
+
+      &.is-selected {
+        color: #1e88f7;
+        font-size: 18px;
+      }
+
+      &.is-disabled {
+        color: #ddd;
+        cursor: default;
+      }
+    }
+  }
+
+  .calendar-calendar-area {
+    opacity: 1;
+    position: relative;
+    transition: 1s;
+
+    &.is-faded {
+      opacity: 0;
+      z-index: -100;
+    }
+
+    .day-letters {
+      margin: 24px 0 12px;
+
+      li {
+        color: #666;
+        display: inline-block;
+        text-align: center;
+        width: ~"calc(100% / 7)";
+      }
+    }
+
+    .days {
+      margin: 12px 0;
+
+      .is-different-month {
+        span {
+          color: #999;
+        }
+      }
+
+      div {
+        &:focus {
+          outline: 0;
+        }
+      }
+
+      li {
+        cursor: pointer;
+        display: inline-block;
+        width: ~"calc(100% / 7)";
+        height: 36px;
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      span {
+        display: inline-block;
+        margin-top: 6px;
+      }
+
+      .is-also-selected, .is-selected {
+        background: #1e88f7;
+        border-radius: 18px;
+        display: inline-block;
+        height: 36px;
+        width: 36px;
+
+        span {
+          color: #fff;
+        }
+      }
+
+      .is-disabled {
+        span {
+          color: #ddd;
+        }
+      }
+    }
+
+    .fa {
+      border-radius: 50px;
+      cursor: pointer;
+      display: inline-block;
+      outline: 0;
+      padding: 5px 7px;
+      position: absolute;
+      transition: 0.5s;
+      top: 10px;
+
+      &.active {
+        animation: thwacked 0.5s infinite;
+      }
+
+      &.is-past-min-max-date {
+        color: #ddd;
+      }
+    }
+
+    .fa-chevron-left {
+      left: 50px;
+    }
+
+    .fa-chevron-right {
+      right: 50px;
+    }
+  }
+
+  .calendar-content {
+    padding: 10px;
+    text-align: left;
+  }
+
+  .calendar-day-area-container {
+    height: 378px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &.no-transition {
+      scroll-behavior: auto !important;
+    }
+  }
+
+  .calendar-day-area {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+
+    &.previous {
+      margin-right: 32px;
+    }
+
+    &.next {
+      margin-left: 32px;
+    }
+
+    &.is-past-min-max-date {
+      opacity: 0 !important;
+    }
+  }
+
+  .calendar-title-bar {
+    background: #1e88f7;
+    text-align: left;
+  }
+
+  .current-displayed-month {
+    display: inline-block;
+    margin: 4px 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  .selected-day {
+    color: #a9cdff;
+    cursor: pointer;
+    font-size: 24px;
+    outline: 0;
+
+    &.active {
+      color: #fff;
+    }
+  }
+
+  .selected-year {
+    color: #a9cdff;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    outline: 0;
+
+    &.active {
+      color: #fff;
+    }
+
+    &.is-only-option {
+      font-size: 24px;
+    }
+  }
+
+  .cancel-button {
+    background: #fff;
+    border: 0;
+    bottom: 10px;
+    color: #1e88f7;
+    cursor: pointer;
+    font-size: 14px;
+    outline: 0;
+    padding: 5px 10px;
+    position: absolute;
+    right: 60px;
+    text-transform: uppercase;
+  }
+
+  .set-button {
+    background: #fff;
+    border: 0;
+    bottom: 10px;
+    color: #1e88f7;
+    cursor: pointer;
+    font-size: 14px;
+    outline: 0;
+    padding: 5px 10px;
+    position: absolute;
+    right: 10px;
+    text-transform: uppercase;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  @keyframes thwacked {
+    0% {
+      box-shadow: 0 0 0 0 rgba(30, 136, 247, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 50px rgba(30, 136, 247, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(30, 136, 247, 0);
+    }
+  }
+}
