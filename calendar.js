@@ -139,34 +139,39 @@ class Calendar extends Component {
       const width = calendarDayNodeWidth + Calendar.DIFFERENT_MONTH_MARGIN_SIZE;
       const { scrollLeft } = element;
 
+      if (this.calendarDayAreaContainerNode.classList.contains('no-transition')) {
+        event.preventDefault();
+        return;
+      }
+
       if (scrollLeft > width + (width / 2)) {
         this.calendarDayAreaContainerNode.scrollLeft = width * 2;
+        this.calendarDayAreaContainerNode.classList.add('no-transition');
         setTimeout(() => {
           const { displayedDateStart } = this.state;
           this.setState({
             displayedDateStart: moment(displayedDateStart).add(1, 'month').toISOString()
           }, () => {
-            this.calendarDayAreaContainerNode.classList.add('no-transition');
             this.calendarDayAreaContainerNode.scrollLeft = width;
             this.calendarDayAreaContainerNode.classList.remove('no-transition');
           });
-        }, 200);
+        }, 400);
       } else if (scrollLeft < width - (width / 2)) {
         this.calendarDayAreaContainerNode.scrollLeft = 0;
+        this.calendarDayAreaContainerNode.classList.add('no-transition');
         setTimeout(() => {
           const { displayedDateStart } = this.state;
           this.setState({
             displayedDateStart: moment(displayedDateStart).add(-1, 'month').toISOString()
           }, () => {
-            this.calendarDayAreaContainerNode.classList.add('no-transition');
             this.calendarDayAreaContainerNode.scrollLeft = width;
             this.calendarDayAreaContainerNode.classList.remove('no-transition');
           });
-        }, 200);
+        }, 400);
       } else {
         this.calendarDayAreaContainerNode.scrollLeft = width;
       }
-    }, 50);
+    }, 200);
   }
 
   // TODO: Attempt to re-do this bad boy. But only after tests are in place. 'cos it's perfe... working right now.

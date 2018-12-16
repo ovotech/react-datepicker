@@ -945,7 +945,7 @@ describe('Mounted <Calendar />', () => {
     expect(global.spies.scrollIntoView).toHaveBeenCalled();
   });
 
-  it('SHOULD scroll the current calendar into view when toggling back to the day picker', () => {
+  it('SHOULD scroll the current calendar into view when toggling back to the day picker', async (done) => {
     calendar.setState({
       activeDateItem: Calendar.ITEM_YEAR
     });
@@ -956,8 +956,10 @@ describe('Mounted <Calendar />', () => {
       activeDateItem: Calendar.ITEM_DATE
     });
 
-    // TODO: This sometimes fails with the count being either 1 or 3...
-    expect(global.spies.scrollIntoView.calls.count()).toBe(2);
+    setTimeout(() => {
+      expect(global.spies.scrollIntoView.calls.count()).toBe(3);
+      done();
+    }, 1000);
   });
 
   // TODO: Consider this. It's just to get code coverage to 100...
@@ -982,7 +984,7 @@ describe('Mounted <Calendar />', () => {
         expect(calendar.state('displayedDateStart')).toBe('2016-12-01T00:00:00.000Z');
         expect(calendar.find('.calendar-day-area').at(1).find('.current-displayed-month').text()).toBe('December 2016');
         done();
-      }, 500);
+      }, 1000);
     });
 
     it('SHOULD handle the "next period" arrow correctly', (done) => {
@@ -995,7 +997,7 @@ describe('Mounted <Calendar />', () => {
         expect(calendar.state('displayedDateStart')).toBe('2017-02-01T00:00:00.000Z');
         expect(calendar.find('.calendar-day-area').at(1).find('.current-displayed-month').text()).toBe('February 2017');
         done();
-      }, 500);
+      }, 1000);
     });
 
     describe('AND a max date of 2017-01-31', () => {
