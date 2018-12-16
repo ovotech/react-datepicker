@@ -1,6 +1,6 @@
 {
   "name": "@kaluza/react-datepicker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Datepicker loosely based around Material UI design.",
   "main": "calendar.js",
   "scripts": {
