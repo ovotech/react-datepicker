@@ -5,25 +5,6 @@
   position: relative;
   width: 100%;
 
-  .chevron-left, .chevron-right {
-    display: inline-block;
-    position: relative;
-    top: 10px;
-    width: 32px;
-
-    img {
-      width: 100%;
-    }
-  }
-
-  .chevron-left {
-    margin-right: 10px;
-  }
-
-  .chevron-right {
-    margin-left: 10px;
-  }
-
   .calendar-month-area, .calendar-year-area {
     height: 350px;
     left: 0;
@@ -129,15 +110,20 @@
       }
     }
 
-    .fa {
+    .chevron-left, .chevron-right {
       border-radius: 50px;
       cursor: pointer;
       display: inline-block;
       outline: 0;
       padding: 5px 7px;
-      position: absolute;
+      position: relative;
       transition: 0.5s;
       top: 10px;
+      width: 32px;
+
+      img {
+        width: 100%;
+      }
 
       &.active {
         animation: thwacked 0.5s infinite;
@@ -148,12 +134,12 @@
       }
     }
 
-    .fa-chevron-left {
-      left: 50px;
+    .chevron-left {
+      margin-right: 10px;
     }
 
-    .fa-chevron-right {
-      right: 50px;
+    .chevron-right {
+      margin-left: 10px;
     }
   }
 
@@ -163,7 +149,7 @@
   }
 
   .calendar-day-area-container {
-    height: 378px;
+    height: 388px;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
